@@ -1,0 +1,175 @@
+:root {
+	--keyShift: 30px;
+	--keyBgColor: #23232e;
+	--keySideColor: #090911;
+	--keyBoardColor: #23232e;
+	--keyBorderColor: #3f3f51;
+	--fontColor: #FFCFFF;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	margin: 0;
+}
+.base {
+	//background: linear-gradient(to right, #3BC4FF 0%, #3895FF 100%);
+	background: linear-gradient(to right, #151515 0%, #1c1d1d 100%);
+	padding: 40px;
+	color: var(--fontColor);
+	font-family: "Titillium Web" , "Oswald", Arial, sans-serif;
+	font-size: 1em;
+	text-align: center;
+	height: 100%;
+	perspective: 1000px;
+}
+.base:after {
+	content: '';
+	background-image: url('../images/background_table.jpg');
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0.3;
+	z-index: -1;
+}
+.heading {
+	display: inline-block;
+	margin: 0;
+	padding: 16px 40px 40px;
+	font-size: 40px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: 2px solid #655811;
+	border-radius: 4px;
+	transform: rotateX(-60deg) rotateZ(2deg);
+	color: #696969;
+	text-shadow: #ffcdcd 0px -3px 0px;
+}
+.heading:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -36px;
+	left: 4px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: 2px solid #655811;
+	width: 100%;
+	height: 100%;
+	transform: rotateX(65deg) skewX(4deg);
+	z-index: -1;
+}
+.mat {
+	position: absolute;
+	right: -600px;
+	width: 500px;
+	height: 400px;
+	background: #1d1d1d;
+	border: 2px solid black;
+	border-radius: 20px;
+	box-shadow: -4px 2px 2px 0 rgba(0, 0, 0, 0.3);
+	transform: rotate(-4deg);
+}
+.mat-mouse {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 200px;
+	width: 100px;
+	background: #e7e7e7;
+	border: 2px solid black;
+	border-radius: 40px;
+	box-shadow:
+		inset 2px -2px 0px 3px rgba(0, 0, 0, 0.3),
+		-5px 2px 2px 0 rgba(0, 0, 0, 0.3);
+	transform: rotate(8deg) translate(-50%, -50%);
+}
+.mat-mouse:after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 27px;
+	transform: translateX(-50%);
+	width: 12px;
+	height: 12px;
+	background-color: grey;
+	border-radius: 50%;
+	border: 1px solid black;
+	box-shadow:
+		inset -1px 1px 0 0 rgba(255, 255, 255, 0.3),
+		inset 1px -1px 0 0 rgba(0, 0, 0, 0.3);
+}
+.keys {
+	position: absolute;
+	top: 200px;
+	left: 120px;
+	display: inline-block;
+	padding: 20px;
+	background: var(--keyBoardColor);
+	border: 4px solid black;
+	border-radius: 14px;
+	border-bottom-width: 12px;
+	transform: rotateX(10deg) rotateZ(2deg);
+	box-shadow: -13px 13px 9px 1px rgba(10,10,15,0.7);
+}
+.keys:before,
+.keys:after {
+	content: "";
+	position: absolute;
+	top: -182px;
+	left: 280px;
+	width: 363px;
+	height: 100px;
+	border: solid 24px #000;
+	border-color: #000 transparent transparent transparent;
+	border-radius: 50%/100px 100px 0 0;
+	transform: rotate(-51deg);
+}
+.keys:after {
+	top: -463px;
+	left: 427px;
+	transform: rotate(125deg);
+}
+.keys-row {
+	text-align: left;
+}
+.keys-row:nth-child(3) {
+	padding-left: var(--keyShift);
+}
+.keys-row:nth-child(4) {
+	padding-left: calc(var(--keyShift) * 2);
+}
+.key {
+	position: relative;
+	display: inline-block;
+	margin: 6px 6px 10px;
+	font-size: 32px;
+	width: 74px;
+	height: 80px;
+	border: 2px solid var(--keyBorderColor);
+	border-radius: 0.2em;
+	line-height: 1.8;
+	text-align: center;
+	background-color: var(--keyBgColor);
+	box-shadow:
+		inset -5px 6px 8px 0px rgba(0, 0, 0, 0.5),
+		inset 4px -4px 12px 6px rgba(0, 0, 0, 0.3),
+		4px 10px 0px 5px var(--keySideColor);
+	text-shadow: 0px 0px 10px rgba(255,255,255,0.8)
+}
+.key.is-pressed {
+	top: 8px;
+	left: 3px;
+	box-shadow:
+		inset 0px 0px 70px 18px rgba(255, 255, 255, 0.1),
+		2px 3px 0px 4px var(--keySideColor);
+}
+.key.is-disabled {
+	top: 10px;
+	color: black;
+	box-shadow:
+		inset 0px 0px 70px 18px rgba(0, 0, 0, 0.5),
+		0px 2px 0px 2px var(--keySideColor);
+	text-shadow: none;
+}
